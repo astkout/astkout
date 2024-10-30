@@ -185,17 +185,17 @@ export const myProjects = [
       {
         id: 1,
         name: "HTML5",
-        path: "/assets/HTML5.png",
+        path: "/assets/icons/html.png",
       },
       {
         id: 2,
         name: "CSS3",
-        path: "assets/CSS3.png",
+        path: "assets/icons/css.png",
       },
       {
         id: 3,
         name: "Bootstrap",
-        path: "assets/Bootstrap.png",
+        path: "assets/icons/bootstrap.png",
       },
     ],
   },
