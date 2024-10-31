@@ -96,8 +96,8 @@ const About = () => {
             <div className="rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center">
               <Globe
                 ref={globeRef}
-                height={350}
-                width={350}
+                height={250}
+                width={250}
                 backgroundColor="rgba(0, 0, 0, 0)"
                 backgroundImageOpacity={0.5}
                 showAtmosphere
@@ -173,7 +173,7 @@ const About = () => {
               className="w-full h-full md:h-[126px] sm:h-[276px] object-cover object-center hover:scale-110 transition-transform duration-150"
             />
 
-            <div className="space-y-2">
+            <div className="space-y-3">
               <a href="#contact">
                 <Button name="Contact Me" isBeam containerClass="w-full" />
               </a>

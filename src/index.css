@@ -1,4 +1,4 @@
-@import url('https://fonts.cdnfonts.com/css/general-sans');
+@import url("https://fonts.cdnfonts.com/css/general-sans");
 
 @tailwind base;
 @tailwind components;
@@ -10,16 +10,16 @@
 
 body {
   background: #010103;
-  font-family: 'General Sans', sans-serif;
+  font-family: "General Sans", sans-serif;
 }
 
 @layer utilities {
   .c-space {
-    @apply sm:px-10 px-5;
+    @apply sm:px-10 px-4;
   }
 
   .head-text {
-    @apply sm:text-4xl text-3xl font-semibold text-gray_gradient;
+    @apply sm:text-3xl text-4xl font-semibold text-gray_gradient; /* Increased font size */
   }
 
   .nav-ul {
@@ -113,7 +113,7 @@ body {
   }
 
   .work-content_container {
-    @apply grid grid-cols-[auto_1fr] items-start gap-5  transition-all ease-in-out duration-500 cursor-pointer hover:bg-black-300 rounded-lg sm:px-5 px-2.5;
+    @apply grid grid-cols-[auto_1fr] items-start gap-5 transition-all ease-in-out duration-500 cursor-pointer hover:bg-black-300 rounded-lg sm:px-5 px-2.5;
   }
 
   .work-content_logo {
@@ -129,12 +129,70 @@ body {
     @apply max-w-xl relative z-10 sm:px-10 px-5 mt-12;
   }
 
+  /* Responsive text size adjustments */
   .field-label {
-    @apply text-lg text-white-600;
+    @apply text-2xl text-white-600;
   }
 
   .field-input {
-    @apply w-full bg-black-300 px-5 py-2 min-h-14 rounded-lg placeholder:text-white-500 text-lg text-white-800 shadow-black-200 shadow-2xl focus:outline-none;
+    @apply w-full bg-black-300 px-4 py-2 min-h-12 rounded-lg placeholder:text-white-500 text-lg text-white-800 shadow-black-200 shadow-2xl focus:outline-none;
+  }
+
+  /* Responsive adjustments for small screens */
+  @media (max-width: 375px) {
+    .contact-container {
+      @apply p-3;
+      @apply mt-6;
+    }
+
+    .head-text {
+      @apply text-3xl;
+    }
+
+    .field-label {
+      @apply text-lg;
+    }
+
+    .field-input {
+      @apply text-sm;
+      @apply py-1;
+    }
+
+    .field-btn {
+      @apply text-sm;
+      @apply px-4;
+      @apply py-1;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .contact-container {
+      @apply p-2;
+      @apply mt-4;
+    }
+
+    .head-text {
+      @apply text-2xl;
+    }
+
+    .field-label {
+      @apply text-base;
+    }
+
+    .field-input {
+      @apply text-sm;
+      @apply py-1;
+    }
+
+    .field-btn {
+      @apply text-sm;
+      @apply px-3;
+      @apply py-1;
+    }
+
+    .text-lg {
+      @apply text-sm;
+    }
   }
 
   .field-btn {
@@ -145,7 +203,7 @@ body {
     @apply w-2.5 h-2.5 object-contain invert brightness-0;
   }
 
-  /*  footer */
+  /* footer */
   .social-icon {
     @apply w-12 h-12 rounded-full flex justify-center items-center bg-black-300 border border-black-200;
   }

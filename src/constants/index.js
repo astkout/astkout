@@ -1,4 +1,4 @@
-import { title } from "framer-motion/client";
+
 
 export const navLinks = [
   {

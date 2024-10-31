@@ -13,7 +13,16 @@ const Contact = () => {
     setForm({ ...form, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const sendEmail = (templateID, emailData) => {
+    return emailjs.send(
+      import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+      templateID,
+      emailData,
+      import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+    );
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
@@ -24,54 +33,40 @@ const Contact = () => {
       reply_to: form.email,
     };
 
-  
-    emailjs
-      .send(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        emailData,
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-      )
-      .then(() => {
-        emailjs.send(
-          import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-          import.meta.env.VITE_APP_EMAILJS_AUTO_REPLY_TEMPLATE_ID,
-          {
-            from_name: 'Asterios Koutoulidis',
-            to_name: form.name,
-            to_email: form.email,
-          },
-          import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-        )
-        .then(() => {
-          setLoading(false);
-          showAlert({
-            show: true,
-            text: 'Message sent successfully! Please check your inbox or spam folder. 😃',
-            type: 'success',
-          });
-
-          setTimeout(() => {
-            hideAlert(false);
-            setForm({ name: '', email: '', message: '' });
-          }, 3000);
-        })
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.error('EmailJS error:', error);
-        showAlert({
-          show: true,
-          text: "Message not sent. Please try again. 😢",
-          type: 'danger',
-        });
+    try {
+      await sendEmail(import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID, emailData);
+      await sendEmail(import.meta.env.VITE_APP_EMAILJS_AUTO_REPLY_TEMPLATE_ID, {
+        from_name: 'Asterios Koutoulidis',
+        to_name: form.name,
+        to_email: form.email,
       });
+
+      setLoading(false);
+      showAlert({
+        show: true,
+        text: 'Message sent successfully! Please check your inbox or spam folder. 😃',
+        type: 'success',
+      });
+
+      setTimeout(() => {
+        hideAlert(false);
+        setForm({ name: '', email: '', message: '' });
+      }, 3000);
+    } catch (error) {
+      setLoading(false);
+      console.error('EmailJS error:', error);
+      showAlert({
+        show: true,
+        text: "Message not sent. Please try again. 😢",
+        type: 'danger',
+      });
+    }
   };
 
   return (
-    <section className="c-space my-20" id="contact">
+    <section className="c-space my-0" id="contact">
       {alert.show && <Alert {...alert} />}
-      <div className="relative min-h-screen flex items-center justify-center flex-col md:mt-20">
+      <div className="relative min-h-screen flex items-center justify-center object-cover flex-col md:mt-20">
         <img src="/assets/terminal.png" alt="terminal-bg" className="absolute inset-0 min-h-screen" />
         <div className="contact-container md:mt-[100px]">
           <h3 className="head-text">Let's talk</h3>
@@ -122,8 +117,16 @@ const Contact = () => {
             </label>
 
             <button className="field-btn" type="submit" disabled={loading}>
-              {loading ? 'Sending...' : 'Send Message'}
-              <img src="/assets/arrow-up.png" alt="arrow-up" className="field-btn_arrow" />
+              {loading ? (
+                <>
+                  <span className="loader" /> Sending...
+                </>
+              ) : (
+                <>
+                  Send Message
+                  <img src="/assets/arrow-up.png" alt="arrow-up" className="field-btn_arrow" />
+                </>
+              )}
             </button>
           </form>
         </div>
