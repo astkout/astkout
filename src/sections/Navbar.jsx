@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { navLinks } from "../constants";
 
-const NavItems = () => {
+const NavItems = ({ handleLinkClick }) => {
   return (
     <ul className="nav-ul">
       {navLinks.map(({ id, href, name }) => (
         <li key={id} className="nav-li">
-          <a href={href} className="nav-li_a" onClick={() => {}}>
+          <a href={href} className="nav-li_a" onClick={handleLinkClick}>
             {name}
           </a>
         </li>
@@ -14,9 +14,13 @@ const NavItems = () => {
     </ul>
   );
 };
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => setIsOpen((prevIsOpen) => !isOpen);
+  const toggleMenu = () => setIsOpen((prevIsOpen) => !prevIsOpen);
+
+  // Close the navbar when a link is clicked
+  const handleLinkClick = () => setIsOpen(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/90">
@@ -24,13 +28,13 @@ const Navbar = () => {
         <div className="flex justify-between items-center py-5 mx-auto c-space">
           <a
             href="/"
-            className="text-neutral-400 font-bold tect-xl hover:text-white transition-colors"
+            className="text-neutral-400 font-bold text-xl hover:text-white transition-colors"
           >
             Asterios
           </a>
           <button
             onClick={toggleMenu}
-            className="text-neutral-400 hover: focus:outline-none sm:hidden flex"
+            className="text-neutral-400 focus:outline-none sm:hidden flex"
             aria-label="Toggle menu"
           >
             <img
@@ -41,14 +45,12 @@ const Navbar = () => {
           </button>
 
           <nav className="sm:flex hidden">
-            <NavItems />
+            <NavItems handleLinkClick={handleLinkClick} />
           </nav>
         </div>
-        <div
-          className={`nav-sidebar ${isOpen ? "max-h-screen" : "max-h-0"}`}
-        >
+        <div className={`nav-sidebar ${isOpen ? "max-h-screen" : "max-h-0"}`}>
           <nav className="p-5">
-            <NavItems />  
+            <NavItems handleLinkClick={handleLinkClick} />
           </nav>
         </div>
       </div>
