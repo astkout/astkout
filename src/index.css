@@ -129,6 +129,9 @@ body {
     @apply max-w-xl relative z-10 sm:px-10 px-5 mt-12;
   }
 
+  .bg-image {
+    @apply absolute inset-0 min-h-screen;
+  }
   /* Responsive text size adjustments */
   .field-label {
     @apply text-2xl text-white-600;
@@ -253,3 +256,35 @@ body {
     transform: rotate(0deg);
   }
 }
+
+@media (max-height: 700px) {
+  .contact-container {
+    @apply p-2 mt-6; /* Reduced padding and top margin */
+  }
+
+  .head-text {
+    @apply text-2xl; 
+  }
+
+  .text-lg {
+    @apply text-sm; 
+  }
+
+  .field-label {
+    @apply text-base; 
+  }
+
+  .field-input {
+    @apply text-sm py-1; 
+  }
+
+  .field-btn {
+    @apply text-sm px-4 py-1;
+  }
+
+  .bg-image {
+    @apply hidden;
+  }
+}
+
+
