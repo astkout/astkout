@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import useAlert from '../hooks/useAlert.js';
 import Alert from '../components/Alert.jsx';
 
-const Contact = () => {
+const ContactForm = () => {
   const formRef = useRef();
   const { alert, showAlert, hideAlert } = useAlert();
   const [loading, setLoading] = useState(false);
@@ -25,36 +25,34 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-  
+
     const emailDataToYou = {
       from_name: form.name,
       from_email: form.email,
       message: form.message,
       reply_to: form.email,
-      to_email: 'astkou12@gmail.com',
+      to_email: 'astkou12@gmail.com', // Your email for receiving the message
     };
-  
-    console.log("Email data being sent:", emailDataToYou);
-  
+
+    const emailDataToClient = {
+      client_name: form.name,
+      client_email: form.email,
+    };
+
     try {
+      // Send email to yourself
       await sendEmail(import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID, emailDataToYou);
-  
-      showAlert({
-        show: true,
-        text: 'Message sent successfully! Please check your inbox or spam folder. 😃',
-        type: 'success',
-      });
-  
-      setForm({ name: '', email: '', message: '' });
-      setTimeout(() => hideAlert(), 3000);
-  
+      console.log("Message to you sent successfully:", emailDataToYou);
+
+      // Send auto-reply to client
+      await sendEmail(import.meta.env.VITE_APP_EMAILJS_AUTO_REPLY_TEMPLATE_ID, emailDataToClient);
+      console.log("Auto-reply to client sent successfully:", emailDataToClient);
+
+      showAlert("Message sent successfully!");
+      setForm({ name: '', email: '', message: '' }); // Clear the form after successful send
     } catch (error) {
-      console.error('EmailJS error:', error);
-      showAlert({
-        show: true,
-        text: "Message not sent. Please try again. 😢",
-        type: 'danger',
-      });
+      console.error("Error sending email:", error);
+      showAlert("Failed to send message. Please try again later.");
     } finally {
       setLoading(false);
     }
