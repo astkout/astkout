@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import useAlert from "../hooks/useAlert.js";
 import Alert from "../components/Alert.jsx";
 
-const ContactForm = () => {
+const Contact = () => {
   const formRef = useRef();
   const { alert, showAlert, hideAlert } = useAlert();
   const [loading, setLoading] = useState(false);
@@ -31,7 +31,7 @@ const ContactForm = () => {
       from_email: form.email,
       message: form.message,
       reply_to: form.email,
-      to_email: "astkou12@gmail.com", // Your email for receiving the message
+      to_email: "astkou12@gmail.com",
     };
 
     const emailDataToClient = {
