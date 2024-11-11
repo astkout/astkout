@@ -12,31 +12,33 @@ const About = () => {
   useEffect(() => {
     if (globeRef.current) {
       globeRef.current.controls().autoRotate = true;
-      globeRef.current.controls().autoRotateSpeed = -1;
+      globeRef.current.controls().autoRotateSpeed = 0.7;
       globeRef.current.pointOfView(originalView);
     }
   }, []);
-
+  
   const handleCopy = () => {
     navigator.clipboard.writeText("astkout12@hotmail.com");
     setHasCopied(true);
-
+  
     setTimeout(() => {
       setHasCopied(false);
     }, 2000);
   };
-
+  
   const zoomInOnLocation = () => {
     if (globeRef.current) {
+      globeRef.current.controls().autoRotateSpeed = 0; 
       globeRef.current.pointOfView(
-        { lat: 53.79648, lng: -1.54785, altitude: 0.5 },
+        { lat: 53.79648, lng: -1.54785, altitude: 0.3 },
         2000
-      ); // Zooming in on the location
+      );
     }
   };
-
+  
   const zoomOutToOriginal = () => {
     if (globeRef.current) {
+      globeRef.current.controls().autoRotateSpeed = 1; 
       globeRef.current.pointOfView(originalView, 2500);
     }
   };
@@ -96,8 +98,8 @@ const About = () => {
             <div className="rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center">
               <Globe
                 ref={globeRef}
-                height={250}
-                width={250}
+                height={350}
+                width={350}
                 backgroundColor="rgba(0, 0, 0, 0)"
                 backgroundImageOpacity={0.5}
                 showAtmosphere
