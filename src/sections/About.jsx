@@ -191,7 +191,7 @@ const About = () => {
               </div>
               <div className="flex gap-3 justify-center mt-5">
                 <a href="https://www.linkedin.com/in/astkout/" target="_blank">
-                  <div className="social-icon hover:bg-stone-700">
+                  <div className="social-icon bg-stone-600 hover:bg-stone-500">
                     <img
                       src="/assets/LinkedIn.png"
                       alt="LinkedIn"
@@ -200,7 +200,7 @@ const About = () => {
                   </div>
                 </a>
                 <a href="https://github.com/astkout" target="_blank">
-                <div className="social-icon hover:bg-stone-700 flex items-center justify-center">
+                <div className="social-icon bg-stone-600 hover:bg-stone-500 flex items-center justify-center">
   <img
     src="/assets/GitHub.png"
     alt="GitHub"
