@@ -186,7 +186,7 @@ const About = () => {
                   alt="copy"
                 />
                 <p className="lg:text-2xl md:text-xl font-medium text-gray_gradient text-white mt-2">
-                  astkout12@gmail.com
+                astkout.dev@gmail.com
                 </p>
               </div>
               <div className="flex gap-3 justify-center mt-5">
@@ -200,13 +200,13 @@ const About = () => {
                   </div>
                 </a>
                 <a href="https://github.com/astkout" target="_blank">
-                  <div className="social-icon hover:bg-stone-700">
-                    <img
-                      src="/assets/GitHub.png"
-                      alt="GitHub"
-                      className="w-1/2 h-1/2"
-                    />
-                  </div>
+                <div className="social-icon hover:bg-stone-700 flex items-center justify-center">
+  <img
+    src="/assets/GitHub.png"
+    alt="GitHub"
+    className="w-1/2 h-1/2 object-contain"
+  />
+</div>
                 </a>
               </div>
             </div>

@@ -102,3 +102,4 @@ export function HackerRoom(props) {
 }
 
 useGLTF.preload("/models/scene.gltf");
+

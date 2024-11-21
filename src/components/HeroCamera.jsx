@@ -23,3 +23,4 @@ const HeroCamera = ({children, isMobile }) => {
 }
 
 export default HeroCamera
+

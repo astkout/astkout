@@ -31,7 +31,7 @@ const Contact = () => {
       from_email: form.email,
       message: form.message,
       reply_to: form.email,
-      to_email: 'astkou12@gmail.com',
+      to_email: 'astkout.dev@gmail.com',
     };
   
     console.log("Email data being sent:", emailDataToYou);
