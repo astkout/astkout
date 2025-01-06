@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -16,20 +18,38 @@ const WorkExperience = () => {
 
         <div className="work-container">
           <div className="work-canvas">
-            <Canvas>
-              <ambientLight intensity={3} />
-              <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-              <directionalLight position={[10, 10, 10]} intensity={1} />
-              <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} />
+          <Canvas>
+      {/* Ambient Light */}
+      <ambientLight intensity={2} />
 
-              <Suspense fallback={<CanvasLoader />}>
-                <Developer position-y={-3} scale={3} animationName={animationName} />
-              </Suspense>
-            </Canvas>
+      {/* Spot Light */}
+      <spotLight
+        position={[10, 10, 10]}
+        angle={0.15}
+        penumbra={1}
+        intensity={0.5}
+        castShadow
+      />
+
+      {/* Directional Light */}
+      <directionalLight
+        position={[10, 10, 10]}
+        intensity={0.5}
+        castShadow
+      />
+
+      {/* Orbit Controls */}
+      <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} />
+
+      {/* Suspense Wrapper */}
+      <Suspense fallback={<CanvasLoader />}>
+        <Developer position={[0, -3, 0]} scale={3} animationName={animationName} />
+      </Suspense>
+    </Canvas>
           </div>
 
           <div className="work-content">
-            <div className="sm:py-10 py-5 sm:px-5 px-2.5">
+            <div className="sm:py-12 py-6 sm:px-5 px-2.5">
               {workExperiences.map((item, index) => (
                 <div
                   key={index}

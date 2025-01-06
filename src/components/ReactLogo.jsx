@@ -6,6 +6,8 @@
     Source: https://sketchfab.com/3d-models/react-logo-76174ceeba96487f9863f974636f641e
 */
 
+/* eslint-disable */
+
 import { Float, useGLTF } from '@react-three/drei';
 import { useMediaQuery } from 'react-responsive';
 

@@ -60,6 +60,32 @@ export const clientReviews = [
 
 export const myProjects = [
   {
+    title: "GO G Cleaning",
+    desc: "My first Client Website",
+    subdesc: "Built with React, Tailwind CSS.",
+    href: "https://gogcleaning.co.uk/",
+    texture: "/textures/project/project0.mp4",
+    logo: "/assets/project-logo0.jpg",
+    logoStyle: {
+      backgroundColor: "#2A1816",
+      border: "0.2px solid #36201D",
+      boxShadow: "0px 0px 60px 0px #AA3C304D",
+    },
+    spotlight: "/assets/spotlight5.png",
+    tags: [
+      {
+        id: 1,
+        name: "React.js",
+        path: "/assets/react.svg",
+      },
+      {
+        id: 2,
+        name: "TailwindCSS",
+        path: "assets/tailwindcss.png",
+      },
+    ],
+  },
+  {
     title: "Finance",
     desc: "eCommerce Website for financial products",
     subdesc: "Built as an eCommerce app with React, Tailwind CSS.",
