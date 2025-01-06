@@ -78,7 +78,7 @@ const Projects = () => {
               ))}
             </div>
 
-            <div className="flex justify-end">
+            <div className="flex justify-end mt-6">
               <a
                 className="flex items-center gap-2 cursor-pointer text-white"
                 href={currentProject.href}

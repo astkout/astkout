@@ -49,7 +49,7 @@ const WorkExperience = () => {
           </div>
 
           <div className="work-content">
-            <div className="sm:py-12 py-6 sm:px-5 px-2.5">
+            <div className="sm:py-12 py- sm:px-5 px-2.5">
               {workExperiences.map((item, index) => (
                 <div
                   key={index}
