@@ -1,25 +1,32 @@
-import React from "react";
 import { Html, useProgress } from "@react-three/drei";
 
 const CanvasLoader = () => {
   const { progress } = useProgress();
 
-  const displayText = progress !== 0 ? `${progress.toFixed(2)}%` : "Loading...";
-
   return (
     <Html
-      as="div"
       center
+      as="div"
       style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
+        padding: "1rem",
+        background: "rgba(0, 0, 0, 0.6)",
+        borderRadius: "1rem",
       }}
     >
       <span className="canvas-loader" />
-      <p style={{ fontSize: 14, color: "#f1f1f1", fontWeight: 800 }}>
-        {displayText}
+      <p
+        style={{
+          fontSize: "0.875rem",
+          color: "#f1f1f1",
+          fontWeight: 700,
+          marginTop: "0.5rem",
+        }}
+      >
+        {progress > 0 ? `${progress.toFixed(1)}%` : "Loading..."}
       </p>
     </Html>
   );

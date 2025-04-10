@@ -15,30 +15,30 @@ const About = () => {
       globeRef.current.controls().autoRotateSpeed = 0.7;
       globeRef.current.pointOfView(originalView);
     }
-  }, []);
-  
+  });
+
   const handleCopy = () => {
-    navigator.clipboard.writeText("astkout12@hotmail.com");
+    navigator.clipboard.writeText("astkout.dev@gmail.com");
     setHasCopied(true);
-  
+
     setTimeout(() => {
       setHasCopied(false);
     }, 2000);
   };
-  
+
   const zoomInOnLocation = () => {
     if (globeRef.current) {
-      globeRef.current.controls().autoRotateSpeed = 0; 
+      globeRef.current.controls().autoRotateSpeed = 0;
       globeRef.current.pointOfView(
         { lat: 53.79648, lng: -1.54785, altitude: 0.3 },
         2000
       );
     }
   };
-  
+
   const zoomOutToOriginal = () => {
     if (globeRef.current) {
-      globeRef.current.controls().autoRotateSpeed = 1; 
+      globeRef.current.controls().autoRotateSpeed = 1;
       globeRef.current.pointOfView(originalView, 2500);
     }
   };
@@ -186,7 +186,7 @@ const About = () => {
                   alt="copy"
                 />
                 <p className="lg:text-2xl md:text-xl font-medium text-gray_gradient text-white mt-2">
-                astkout.dev@gmail.com
+                  astkout.dev@gmail.com
                 </p>
               </div>
               <div className="flex gap-3 justify-center mt-5">
@@ -200,13 +200,13 @@ const About = () => {
                   </div>
                 </a>
                 <a href="https://github.com/astkout" target="_blank">
-                <div className="social-icon bg-stone-600 hover:bg-stone-500 flex items-center justify-center">
-  <img
-    src="/assets/GitHub.png"
-    alt="GitHub"
-    className="w-1/2 h-1/2 object-contain"
-  />
-</div>
+                  <div className="social-icon bg-stone-600 hover:bg-stone-500 flex items-center justify-center">
+                    <img
+                      src="/assets/GitHub.png"
+                      alt="GitHub"
+                      className="w-1/2 h-1/2 object-contain"
+                    />
+                  </div>
                 </a>
               </div>
             </div>
